@@ -1,0 +1,46 @@
+package com.praktikum7.bhisma.praktikumspringbootmongodb.model;
+
+import java.math.BigDecimal;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.mongodb.core.mapping.Field;
+
+@Document("expense")
+public class Expense {
+	@Id
+	private String id;
+	@Field(name = "name")
+	@Indexed(unique = true)
+	private String expenseName;
+	@Field(name = "category")
+	private ExpenseCategory expenseCategory;
+	@Field(name = "amount")
+	private BigDecimal expenseAmount;
+	
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getExpenseName() {
+		return expenseName;
+	}
+	public void setExpenseName(String expanseName) {
+		this.expenseName = expanseName;
+	}
+	public ExpenseCategory getExpenseCategory() {
+		return expenseCategory;
+	}
+	public void setExpenseCategory(ExpenseCategory expenseCategory) {
+		this.expenseCategory = expenseCategory;
+	}
+	public BigDecimal getExpenseAmount() {
+		return expenseAmount;
+	}
+	public void setExpenseAmount(BigDecimal expenseAmount) {
+		this.expenseAmount = expenseAmount;
+	}
+}
